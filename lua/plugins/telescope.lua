@@ -14,6 +14,7 @@ return {
       vim.keymap.set("n", "<leader>gr", ":Telescope lsp_references<CR>", {})
       vim.keymap.set("n", "<leader>gd", ":Telescope lsp_definitions<CR>", {})
       vim.keymap.set("n", "<leader>gi", ":Telescope lsp_implementations<CR>", {})
+      vim.keymap.set("n", "<leader>d", ":Telescope diagnostics<CR>", {})
     end,
   },
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -21,6 +22,12 @@ return {
     "nvim-telescope/telescope-ui-select.nvim",
     config = function()
       require("telescope").setup({
+        defaults = {
+          file_ignore_patterns = {
+            "node_modules",
+            -- ".git",
+          }
+        },
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown({}),

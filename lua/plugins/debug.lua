@@ -8,6 +8,7 @@ return {
   config = function()
     local dap = require("dap")
     local dapui = require("dapui")
+    vim.fn.sign_define('DapBreakpoint', { text='🔴', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl='DapBreakpoint' })
 
     require("dap-go").setup()
     require("dapui").setup()
